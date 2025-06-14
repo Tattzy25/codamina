@@ -393,6 +393,9 @@
                     window.addEventListener('message', (event) => {
                         if (event.data.type === 'groq-widget-config') {
                             this.config = event.data.config || {};
+                            if (this.config.apiKey) {
+                                this.apiKey = this.config.apiKey;
+                            }
                             if (this.config.model) {
                                 this.DEFAULT_MODEL = this.config.model;
                             }
@@ -414,6 +417,8 @@
                 this.messageInput = document.getElementById('groqMessageInput');
                 this.sendButton = document.getElementById('groqSendButton');
                 this.typingIndicator = document.getElementById('groqTypingIndicator');
+                this.apiKeyModal = document.getElementById('groqApiKeyModal');
+                this.apiKeyInput = document.getElementById('groqApiKeyInput');
             }
             
             initializeEventListeners() {
